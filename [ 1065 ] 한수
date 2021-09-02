@@ -1,0 +1,43 @@
+#include <stdio.h>
+#pragma warning(disable:4996)
+
+int HAN(int num) {
+
+	int v = ((num / 10) % 10) - (num % 10);
+	num /= 10;
+
+	while (num >= 10) {
+		
+		if (((num / 10) % 10) - (num % 10) != v)
+			return 0;
+
+		num /= 10;
+
+	}
+	
+	return 1;
+}
+
+
+int main() {
+
+	int N;
+	scanf("%d", &N);
+
+	int cnt = 0;
+
+	if (N < 100)
+		printf("%d", N);
+
+	else {
+
+		for (int i = 100; i <= N; i++) {
+
+			if (HAN(i))
+				cnt++;
+		}
+		printf("%d", cnt + 99);
+	}
+
+	return 0;
+}
