@@ -1,0 +1,63 @@
+#include <stdio.h>
+#pragma warning(disable:4996)
+
+void binaryNum(long long num);
+
+int main(void) {
+
+	long long N;
+	scanf("%lld", &N);
+
+	binaryNum(N);
+	printf("\n");
+
+	return 0;
+}
+
+void binaryNum(long long num) {
+
+	if (num == 1) {
+		printf("%d", 1);
+	}
+
+	else
+	{
+		int r = num % 2;
+		num /= 2;
+		binaryNum(num);
+		printf("%d", r);
+	}
+}
+
+
+/*
+(ver.2)
+#include <stdio.h>
+#pragma warning(disable:4996)
+
+void binaryNum(long long num);
+
+int main(void) {
+
+	long long N;
+	scanf("%lld", &N);
+
+	binaryNum(N);
+	printf("\n");
+
+	return 0;
+}
+
+void binaryNum(long long num) {
+
+	if (num == 1) {
+		printf("%lld", num);
+	}
+
+	else
+	{
+		binaryNum(num / 2);
+		printf("%lld", num % 2);
+	}
+}
+*/
