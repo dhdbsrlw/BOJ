@@ -1,0 +1,28 @@
+#include <stdio.h>
+#pragma warning(disable: 4996)
+
+//숫자 하나 입력 > 검사 > 폐기, 따라서 배열 필요X
+
+int main() {
+
+    int N, num, cnt = 0;
+
+    scanf("%d", &N);
+
+    for (int i = 0; i < N; i++) {
+        scanf("%d", &num);
+        
+        int j;
+        
+        for (j = 2; j < num; j++) {
+
+            if (num % j == 0)
+                break;
+        }
+
+        if (j == num) cnt++;
+    }
+
+    printf("%d\n", cnt);
+    return 0;
+}
