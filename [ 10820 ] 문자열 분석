@@ -1,0 +1,25 @@
+#include <stdio.h>
+#include <string.h>
+#pragma warning(disable: 4996)
+
+int main(void) {
+
+	char stc[101] = {0, };
+
+	while (gets(stc)) { //문자열을 입력받을 때마다반복
+
+		int small = 0, large = 0, space = 0, number = 0;
+
+		for (int j = 0; j < strlen(stc); j++) {
+
+			if (stc[j] == ' ') space++;
+			else if (stc[j] >= (int)'A' && stc[j] <= (int)'Z') large++;
+			else if (stc[j] >= (int)'a' && stc[j] <= (int)'z') small++;
+			else if (stc[j] >= '0' && stc[j] <= '9') number++;
+		}
+
+		printf("%d %d %d %d\n", small, large, number, space);
+	}
+
+	return 0;
+}
