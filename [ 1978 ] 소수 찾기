@@ -1,7 +1,7 @@
 #include <stdio.h>
 #pragma warning(disable: 4996)
 
-//숫자 하나 입력 > 검사 > 폐기, 따라서 배열 필요X
+//숫자 하나 입력 > 검사 > 폐기 (배열 필요X)
 
 int main() {
 
