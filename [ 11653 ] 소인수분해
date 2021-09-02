@@ -1,0 +1,35 @@
+#include <stdio.h>
+#include <math.h>
+#pragma warning(disable:4996)
+
+int main() {
+
+	int n;
+	scanf("%d", &n);
+
+	for (int i = 2; i <= n; i++) {
+
+		if (n % i != 0) //약수판정
+			continue;
+
+		else { //소수판정
+			for (int j = 2; j <= i; j++) {
+				
+				if (i == j) { //소수O
+					printf("%d\n", i);
+					n /= i;
+					i = 1;
+					break;
+				}
+				
+				if (i % j == 0)//소수X
+					break;
+
+			
+			}
+		}
+
+		if (n == 1)
+			return 0;
+	}
+}
