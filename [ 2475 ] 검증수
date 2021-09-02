@@ -1,0 +1,20 @@
+#include <stdio.h>
+#pragma warning(disable: 4996)
+#include <math.h>
+
+int main(void) {
+
+	int num[5] = { 0, };
+	int det = 0;
+
+	for (int i = 0; i < 5; i++) {
+		scanf("%d", &num[i]);
+		det += pow(num[i],2);
+	}
+
+	det %= 10;
+
+		printf("%d", det);
+
+		return 0;
+}
