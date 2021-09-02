@@ -1,0 +1,37 @@
+#include <stdio.h>
+#pragma warning(disable:4996)
+
+int cnt = 0; //전역변수 선언
+
+int main(void) {
+
+	float Cavg;
+	int C, Cnum;
+	
+	scanf("%d", &C);
+
+	for (int i = 0; i < C; i++) {
+		
+		int	Cwho = 0, sum = 0;
+		int student[1000] = { 0, };
+
+		scanf("%d", &Cnum);
+
+		for (int j = 0; j < Cnum; j++) {
+
+			scanf("%d", &student[j]);
+			sum += student[j];
+		}
+
+		Cavg = (float)sum / Cnum;
+
+		for (int j = 0; j < Cnum; j++) {
+			if (student[j] > Cavg)
+				Cwho++;
+	}
+
+		printf("%.3f%%\n", (float)Cwho / Cnum * 100);
+	}
+
+	return 0; 
+}
