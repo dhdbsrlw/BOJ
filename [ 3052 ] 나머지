@@ -1,0 +1,30 @@
+#include <stdio.h>
+#pragma warning(disable: 4996)
+
+int main(void) {
+
+	int arr1[10] = { 0, };
+	int arr2[42] = { 0, };
+	int i;
+	int num;
+
+	for (i = 0; i < 10; i++)
+		scanf("%d", &arr1[i]);
+
+
+	for (i = 0; i < 10; i++) {
+		num = arr1[i] % 42; 
+		arr2[num]++;
+	}
+
+	int result = 0;
+
+	for (i = 0; i < 42; i++)
+		if(arr2[i] >= 1)
+			result++;
+
+	printf("%d", result);
+
+	return 0;
+
+}
