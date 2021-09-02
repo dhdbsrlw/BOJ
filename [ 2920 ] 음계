@@ -33,5 +33,5 @@ int main(void) {
 		printf("mixed");
 
 
-			return 0;
+	return 0;
 }
