@@ -1,0 +1,36 @@
+#include <stdio.h>
+#pragma warning(disable: 4996)
+
+
+int main(void) {
+
+	//2차원 배열 활용
+
+	int N;
+	int x, y;
+	int total = 0;
+	int arr[100][100] = { 0, };
+
+	scanf("%d", &N);
+
+	for (int i = 0; i < N; i++) {
+
+		scanf("%d %d", &x, &y);
+
+		for (int xx = x; xx <= x + 9; xx++) {
+			for (int yy = y; yy <= y + 9; yy++) {
+				if (arr[xx][yy] == 0) 
+					arr[xx][yy] = 1;
+			}
+		}
+	}
+		
+	for (int xx = 0; xx < 100; xx++) {
+		for (int yy = 0; yy < 100; yy++) {
+			if (arr[xx][yy] == 1) total++;
+		}
+	}
+
+	printf("%d\n", total);
+	return 0;
+}
