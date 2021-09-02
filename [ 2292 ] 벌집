@@ -1,0 +1,30 @@
+#include <stdio.h>
+#pragma warning(disable:4996)
+
+int main(void) {
+
+	int N;
+	scanf("%d", &N);
+
+	int i = 1;
+	int start = 2, end = 7;
+	
+	while(1){
+
+		if (N == 1) {
+			printf("%d\n", 1);
+			break;
+		}
+
+		if (start <= N && N <= end) {
+			printf("%d\n", i + 1);
+			break;
+		}
+
+		start += (6 * i++);
+		end = start + (6 * i) - 1;
+
+	}
+
+	return 0;
+}
