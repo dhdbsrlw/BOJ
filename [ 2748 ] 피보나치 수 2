@@ -1,0 +1,57 @@
+#include <stdio.h>
+#pragma warning(disable:4996)
+
+int main(void) {
+
+	int n;
+	long long int fibo[90] = { 0, };
+
+	scanf("%d", &n);
+
+	fibo[0] = 0;
+	fibo[1] = 1;
+	
+	for (int i = 2; i <= n; i++) {
+		fibo[i] = fibo[i - 1] + fibo[i - 2];
+	}
+
+	printf("%lld\n", fibo[n]);
+
+	return 0;
+}
+
+
+
+/*
+(ver.2)
+#include <stdio.h>
+#pragma warning(disable:4996)
+
+long long int temp[90];
+long long int fibo(int n);
+
+int main(void) {
+
+	int n;
+
+	scanf("%d", &n);
+
+	printf("%lld\n", fibo(n));
+
+	return 0;
+}
+
+long long int fibo(int n) {
+
+	if (n == 0 || n == 1)
+		return n;
+
+	else if (temp[n] != 0)
+		return temp[n];
+
+	else
+		return	temp[n] = fibo(n - 1) + fibo(n - 2);
+
+}
+
+*/
