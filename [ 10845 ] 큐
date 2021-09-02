@@ -1,0 +1,84 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#pragma warning(disable:4996)
+
+int main() {
+
+	int N; //명령의 수
+	scanf("%d", &N);
+
+	char c[6]; //명령
+	int arr[10000] = { 0, }; //저장된 정수
+
+	int back = 0; //큐의 가장 뒤 인덱스
+	int front = 0; //큐의 가장 앞 인덱스
+
+	for (int i = 0; i < N; i++) {
+
+		scanf("%s", c);
+
+
+		// (1) push
+		if ((strcmp(c, "push") == 0)) { // ""는 const char*, ''는 char
+			scanf("%d", &arr[back++]);
+		}
+
+		
+		// (2) pop
+		else if ((strcmp(c, "pop") == 0)) {
+
+			if (arr[front] == 0)
+				printf("%d\n", -1);
+
+
+			else {
+			printf("%d\n", arr[front]);
+			arr[front] = 0;
+			front++;
+			}
+		}
+
+
+		// (3) size
+		else if ((strcmp(c, "size") == 0)) 		
+			printf("%d\n", back - front);
+
+
+		// (4) empty
+		else if ((strcmp(c, "empty") == 0)) {
+
+			if (arr[front] == 0)
+				printf("%d\n", 1);
+
+			else
+				printf("%d\n", 0);
+		}
+
+		
+		// (5) front
+		else if ((strcmp(c, "front") == 0)) {
+
+			if (arr[front] == 0)
+				printf("%d\n", -1);
+
+			else
+				printf("%d\n", arr[front]);
+
+		}
+
+
+		// (6) back
+		else if ((strcmp(c, "back") == 0)) {
+
+			if (arr[front] == 0)
+				printf("%d\n", -1);
+
+			else
+				printf("%d\n", arr[back-1]);
+
+		}
+	}
+
+	return 0;
+}
