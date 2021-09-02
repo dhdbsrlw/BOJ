@@ -1,0 +1,29 @@
+#include <stdio.h>
+#include <string.h>
+#pragma warning(disable: 4996)
+
+char word[100]; // word는 입력받는 문자열, word[i]는 각각의 문자
+int alphabet[26]; // alphabet[0] = a 등등을 의미 
+				  //일일이 카운트 위한 수단
+				  // {-1, } = {-1, 0, 0, ...}
+
+int main(void) {
+
+	scanf("%s", word);
+	memset(alphabet, -1, sizeof(alphabet)); // 0 혹은 -1만 가능
+	int i, j;
+	for (i = 0; word[i] != 0; i++) { //조건: 문자가 입력되어 있다면,
+		j = (int)word[i] - (int)'a';
+
+		if (alphabet[j] != -1)  // 처음 등장하는 위치를 기준으로 하기 위한, 조건
+			continue;
+
+		alphabet[j] = i;
+	}
+
+	for (i = 0; i < 26; i++) 
+		printf("%d ", alphabet[i]);
+	
+	
+	return 0;
+	}
