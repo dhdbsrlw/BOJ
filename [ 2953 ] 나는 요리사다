@@ -1,0 +1,36 @@
+#include <stdio.h>
+#pragma warning(disable: 4996)
+
+int main(void) {
+
+	int score[5][4] = { 0, };
+	int sum[5] = { 0, };
+	int i, j;
+
+
+	for (i = 0; i < 5; i++) {
+		for (j = 0; j < 4; j++)
+			scanf("%d", &score[i][j]);
+	}
+
+	for (i = 0; i < 5; i++) {
+		for (j = 0; j < 4; j++) {
+			sum[i] += score[i][j];
+		}
+	}
+
+	int max = sum[0];
+	int max_n = 1;
+
+	for (i = 1; i < 5; i++){
+		if (sum[i] > max) {
+			max = sum[i];
+			max_n = i + 1;
+		}
+	}
+
+	printf("%d %d\n", max_n, max);
+
+	return 0;
+
+}
