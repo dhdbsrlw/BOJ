@@ -1,0 +1,38 @@
+#include <stdio.h>
+#pragma warning(disable:4996)
+
+int main(void) {
+
+	int N;
+	int x[50] = { 0, };
+	int y[50] = { 0, };
+	int i, j, cnt;
+
+	scanf("%d", &N);
+
+	for (i = 0; i < N; i++) {
+
+		scanf("%d %d", &x[i], &y[i]);
+	}
+
+	for (i = 0; i < N; i++ ) {
+	
+		if (i != 0) 
+			printf(" ");
+	
+		cnt = 0;
+
+		for (j = 0; j < N; j++) {
+			
+			if ((x[j] > x[i]) && (y[j] > y[i]))
+				cnt++;
+		}
+
+		printf("%d", cnt + 1);
+		
+	 }
+
+	printf("\n");
+
+	return 0;
+}
