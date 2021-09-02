@@ -1,0 +1,69 @@
+#include <stdio.h>
+#include <string.h>
+#pragma warning(disable:4996)
+
+int main(void) {
+
+	int N, num;
+	char order[10];
+	int stack[10000] = { 0, }; 
+	//스택은 중간 삽입이 불가, 따라서 배열 사용 가능
+	int j = 0;
+
+	scanf("%d", &N);
+
+	for (int i = 0; i < N; i++) {
+
+		scanf("%s", order);
+
+		//push
+		if (strcmp("push", order) == 0) {
+			scanf("%d", &num);
+			stack[j++] = num;
+		}
+
+		//pop
+		else if (strcmp("pop", order) == 0) {
+
+			if (stack[0] == 0)
+				printf("%d\n", -1);
+			else {
+				printf("%d\n", stack[--j]);
+				stack[j] = 0;
+			}
+		}
+
+		//size
+		else if (strcmp("size", order) == 0) {
+
+			if (stack[0] == 0)
+				printf("%d\n", 0);
+
+			else
+				printf("%d\n", j );
+		}
+
+
+		//empty
+		else if (strcmp("empty", order) == 0) {
+
+			if (stack[0] == 0)
+				printf("%d\n", 1);
+			else
+				printf("%d\n", 0);
+		}
+
+
+		//top
+		else if (strcmp("top", order) == 0) {
+
+			if (stack[0] == 0)
+				printf("%d\n", -1);
+
+			else
+				printf("%d\n", stack[j - 1]);
+		}	
+	}
+
+	return 0;
+}
