@@ -1,0 +1,27 @@
+#include <stdio.h>
+#pragma warning(disable: 4996)
+
+int main(void) {
+
+	int i, num, N;
+	int max = -1000001, min = 1000001; //초기값 설정의 한 방법
+
+	scanf("%d", &N);
+
+	for (i = 0; i < N; i++){
+
+		scanf("%d", &num);
+		
+		if (num > max)
+			max = num;
+
+		if (num < min)
+			min = num;
+	}
+
+	printf("%d %d", min, max);
+
+	return 0;
+  
+
+}
