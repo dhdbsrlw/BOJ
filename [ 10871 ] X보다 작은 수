@@ -1,0 +1,23 @@
+#include <stdio.h>
+#pragma warning(disable: 4996)
+
+int main(void)
+{
+	int N, X;
+	int i, n;
+
+	scanf("%d %d", &N, &X);
+
+	for (i = 1; i <= N; i++) {
+
+		scanf("%d", &n);
+
+		if (n < X)
+			printf("%d ", n);
+		else if (n >= X)
+			printf("");
+
+	}
+		
+	return 0;
+}
