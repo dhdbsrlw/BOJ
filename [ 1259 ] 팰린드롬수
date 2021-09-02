@@ -32,3 +32,48 @@ int main(void) {
 	}
 	return 0;
 }
+
+/*
+(ver.2)
+#include <stdio.h>
+#include <math.h>
+#pragma warning(disable: 4996)
+
+int main(void) {
+
+	int n, temp, cnt, felin;
+
+	for (;;) { //초기화필수(for문 안의 첫번째 초기화 구간은 제일 첫번째 반복에서만 시행된다.)
+
+		temp = 1, cnt = 0, felin = 0;
+
+		scanf("%d", &n);
+
+		if (n == 0) break;
+
+		temp = n;
+
+		while (temp > 0)
+		{
+			temp /= 10;
+			cnt++;
+
+		} //반복문이 끝나면 temp = 0 으로 초기화
+
+		temp = n;
+
+		for (; cnt > 0; cnt--) {
+			felin += (temp % 10) * pow(10, cnt - 1);
+
+			temp /= 10;
+		}
+
+		if (n == felin) printf("yes\n");
+		else printf("no\n");
+
+	}
+
+	return 0;
+
+}
+*/
