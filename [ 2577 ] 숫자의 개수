@@ -1,0 +1,28 @@
+#include <stdio.h>
+#pragma warning(disable: 4996)	
+
+int main(void)
+{
+	int A, B, C;
+	int result[10] = {0, };
+	int i;
+
+	scanf("%d %d %d", &A, &B, &C);
+	
+	int	product = A * B * C;
+	int new_product;
+
+	//반복문의 끝이 꼭 10이란 법X //i가 순차적으로 나온다는 법X
+
+	for (new_product = 1; product > 0;) 
+	{
+		new_product = product % 10;
+			result[new_product]++;
+			product /= 10;
+	}
+
+	for (i = 0; i < 10; i++)
+		printf("%d\n", result[i]);
+
+	return 0;
+}
