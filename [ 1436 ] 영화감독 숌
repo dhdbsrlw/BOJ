@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include <math.h>
+#pragma warning(disable:4996)
+
+int main(void) {
+
+	int N;
+	scanf("%d", &N);
+
+	int num = 665;
+	int idx = 0;
+	int temp = num;
+
+	while (1) {
+
+		while (temp) {
+
+			if (temp % 10 == 6) {
+				if (((temp / 10) % 10) == 6) {
+					if (((temp / 100) % 10) == 6) {
+						idx++;
+						break;
+					}
+				}
+			}
+
+			temp = floor(temp / 10);
+		}
+
+		if (N == idx) {
+			printf("%d\n", num);
+			return 0;
+		}
+
+		num++;
+		temp = num;
+
+	}
+}
