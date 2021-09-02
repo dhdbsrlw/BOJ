@@ -1,0 +1,47 @@
+#include <stdio.h>
+#include <string.h>
+#pragma warning (disable: 4996)
+
+int main(void) {
+	
+	int t;
+	int sum = 0;
+	
+	scanf("%d", &t);
+
+	char ox[80] = { 0, };
+	int score[80] = { 0, };
+
+	for (int i = 0; i < t; i++) {
+		scanf("%s", ox);
+
+		score[0] = (ox[0] == 'O'); //오빠왈 고급코드 TRUE면 1 FALSE면 0
+		sum = score[0];
+
+		for (int j = 1; j < strlen(ox); j++) //strlen(문자열) : 문자열의 길이를 측정 (숫자로 값이 반환)
+		{
+			if (ox[j] == 'X') {
+				score[j] = 0;
+				sum = 0;
+			}
+			if (ox[j] == 'O') {
+				sum++; 
+				score[j] = sum; 
+			}
+		}
+
+		int total_sum = 0;
+
+		for (int k = 0; k < strlen(ox); k++) 
+			total_sum += score[k];
+	
+
+		printf("%d\n", total_sum);
+
+	}
+
+
+			return 0;
+}
+
+//디버깅 순서: 중단점 (과정마다) 찍기 > 입력(백준 복사) > F5로 실행 > 붙여넣기 > 중단점마다 변수값 확인
