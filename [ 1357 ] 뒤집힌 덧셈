@@ -1,0 +1,25 @@
+#include <stdio.h>
+#pragma warning(disable:4996)
+
+int Rev(int n) {
+
+	int reverse = 0;
+
+	while (n) {
+
+		reverse = ((10 * reverse) + n % 10);
+		n /= 10;
+	}
+
+	return reverse;
+}
+
+int main() {
+
+	int X, Y;
+	scanf("%d %d", &X, &Y);
+
+	printf("%d\n", Rev(Rev(X) + Rev(Y)));
+
+	return 0;
+}
