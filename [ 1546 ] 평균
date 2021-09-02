@@ -1,0 +1,32 @@
+#include <stdio.h>
+#pragma warning(disable: 4996)	
+
+int main(void)
+{
+	int M = 0; //max
+	int N;
+	int i;
+	int score;
+	int sum = 0;
+	float avg;
+
+	scanf("%d", &N);
+
+	for (i = 1; i <= N; i++) {
+		
+		scanf("%d", &score);
+
+		if (score >= M)
+			M = score;
+		
+		sum += score;
+
+	}
+
+	avg = (sum * ((float)100 / M))/(float)N; //float의 위치가 어디? //float
+
+	printf("%.3f", avg);
+
+	return 0;
+
+}
