@@ -1,0 +1,32 @@
+#include <stdio.h>
+#pragma warning(disable:4996)
+
+int main() {
+
+	int M, N, Q = 0, SUM = 0;
+	int square[100] = { 0, };
+	
+	scanf("%d", &M);
+	scanf("%d", &N);
+
+	for (int i = 1; i * i <= N; i++) {
+
+		if (i * i >= M) {
+			square[Q] = i * i;
+			Q++;
+		}
+	}
+	
+	if (square[0] == 0)
+		printf("%d\n", -1);
+
+	else {
+		for (int i = 0; i < Q; i++)
+			SUM += square[i];
+	
+		printf("%d\n", SUM);
+		printf("%d\n", square[0]);
+	}
+
+	return 0;
+}
