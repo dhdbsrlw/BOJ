@@ -1,0 +1,93 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#pragma warning(disable:4996)
+
+typedef struct {
+
+	char name[50];
+	int length;
+
+}word;
+
+word arr[20001];
+word sort[20001];
+
+
+void merge(word* arr, int first, int mid, int last) {
+
+	int i = first;
+	int j = mid + 1;
+	int k = first;
+
+	while (i <= mid && j <= last) {
+
+		if (arr[i].length < arr[j].length)
+			sort[k++] = arr[i++];
+
+
+		else if (arr[i].length > arr[j].length)
+			sort[k++] = arr[j++];
+
+
+		else {
+			if (strcmp(arr[i].name, arr[j].name) < 0)
+				sort[k++] = arr[i++];
+			else
+				sort[k++] = arr[j++];
+		}
+	}
+
+	if (i > mid) {
+		while (j <= last)
+			sort[k++] = arr[j++];
+	}
+
+	else {
+		while (i <= mid)
+			sort[k++] = arr[i++];
+	}
+
+	for (int m = first; m <= last; m++)
+		arr[m] = sort[m];
+
+
+}
+
+void mergesort(word* arr, int first, int last) {
+
+	int mid;
+
+	if (first < last) {
+		mid = (first + last) / 2;
+
+		mergesort(arr, first, mid);
+		mergesort(arr, mid + 1, last);
+		merge(arr, first, mid, last);
+	}
+}
+
+int main(void) {
+
+	int N;
+	scanf("%d", &N);
+
+	
+	for (int i = 0; i < N; i++) {
+		scanf("%s", arr[i].name);
+		arr[i].length = strlen(arr[i].name);
+	}
+
+	mergesort(arr, 0, N - 1);
+
+	printf("%s\n", arr[0].name);
+
+	for (int i = 1; i < N; i++) {
+	
+		if (strcmp(arr[i].name, arr[i - 1].name) != 0){
+			printf("%s\n", arr[i].name);
+		}
+	}
+
+	return 0;
+}
