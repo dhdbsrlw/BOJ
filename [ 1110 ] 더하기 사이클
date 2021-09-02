@@ -1,0 +1,31 @@
+#include <stdio.h>
+#pragma warning(disable: 4996)	
+
+int main(void)
+{
+	int N, M;
+	int a, b, c, d;
+	int count = 0;
+	scanf("%d", &N); //scanf의 위치가, a와 b에 대한 정의 윗줄에 있어야 오류나지 않는다. 
+
+	M = N;
+
+	while(1) 
+	{
+		count++;
+
+		a = M / 10; //십의 자리 수 
+		b = M % 10; //일의 자리 수 
+		c = a + b; //1단계
+		d = (b * 10) + (c % 10); //새로운 수
+	
+		if (d == N)
+			break;
+
+		M = d;
+	} 
+
+	printf("%d", count);
+
+	return 0;
+}
