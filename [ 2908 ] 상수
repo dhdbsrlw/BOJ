@@ -1,0 +1,50 @@
+#include <stdio.h>
+#pragma warning(disable: 4996)
+
+	int a;
+	int b;
+
+int main()
+{
+	scanf("%d %d", &a, &b);
+
+
+	int c = a % 10; //일의자리 수
+	int d = b % 10;
+
+	int e = (a / 10) - (a / 100) * 10; // 십의자리 수
+	int f = (b / 10) - (b / 100) * 10;
+
+	int g = a / 100; //백의 자리 수
+	int h = b / 100;
+
+
+	if (c == d)
+	{
+		if (e == f)
+		{
+			if (g > h)
+				printf("%d", c * 100 + e * 10 + g);
+			else
+				printf("%d", d * 100 + f * 10 + h);				
+		
+		}
+
+		else if (e > f)
+			printf("%d", c * 100 + e * 10 + g);
+
+		else
+			printf("%d", d * 100 + f * 10 + h);
+
+	}
+
+	else if (c > d)
+		printf("%d", c * 100 + e * 10 + g);
+
+	else
+		printf("%d", d * 100 + f * 10 + h);
+
+
+return 0;
+
+}
