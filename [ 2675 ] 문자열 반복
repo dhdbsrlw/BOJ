@@ -1,0 +1,32 @@
+#include <stdio.h>
+#pragma warning(disable: 4996)
+
+//코드-데이터-힙-스택
+
+int main(void) {
+
+	int	T;
+	char S[30] = {0,}; //문자열, S[i]: i번째 문자
+	int R[1000] = {0,}; //R[i]: i번째 문자열 반복 횟수
+	//사이즈 - 메모리 할당(확보해두는 것) , 딱 맞을 필요 없다.
+
+	scanf("%d", &T);
+	
+	for (int i = 0; i < T; i++){
+		scanf("%d %s", &R[i] ,S); //S에 abc 저장하면, S[0]=a가 출력된다.
+
+		for (int k = 0; S[k] != 0; k++) {
+			
+			for (int j = 0; j < R[i]; j++) {
+				printf("%c", S[k]);
+			}
+		}
+
+		printf("\n");
+
+	}
+
+	//입력과 출력은 원래는 따로따로 되니까, 콘솔 창에 한번에 뜨는 것은 신경쓰지 말자.
+
+	return 0;
+}
