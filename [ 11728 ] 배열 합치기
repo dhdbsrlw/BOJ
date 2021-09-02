@@ -1,0 +1,39 @@
+#include <stdio.h>
+#pragma warning(disable:4996)
+
+int N, M;	//굳이 포인터로 A와 B를 어렵게 합치려하지 말고, 새로운 배열에 작은 수부터 저장
+
+long long A[1000001];
+long long B[1000001];
+long long C[2000001];
+
+int main(void) {
+	
+	scanf("%d %d", &N, &M);
+	
+	for (int i = 0; i < N; i++) 
+		scanf("%lld", &A[i]);
+
+	for (int i = 0; i < M; i++)
+		scanf("%lld", &B[i]);
+
+	int Anum = 0, Bnum = 0, t = 0;
+
+	while (Anum < N && Bnum < M) {
+
+		if (A[Anum] <= B[Bnum])
+			C[t++] = A[Anum++];
+		else
+			C[t++] = B[Bnum++];
+
+	}
+
+	while (Anum < N) C[t++] = A[Anum++]; 
+	while (Bnum < M) C[t++] = B[Bnum++];
+
+
+	for (int i = 0; i < t; i++)
+		printf("%lld ", C[i]);
+
+	return 0;
+}
