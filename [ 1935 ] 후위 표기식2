@@ -1,0 +1,47 @@
+#include <stdio.h>
+#pragma warning(disable:4996)
+
+double calculate(double a, double b, char c);
+int main(void) {
+
+int n; // 피연산자 개수
+scanf("%d", &n);
+
+char expression[150] = { 0, }; // 피연산식
+scanf("%s", expression);
+
+double letter[26] = { 0, }; // 알파벳
+for (int i = 0; i < n; i++) 
+	scanf("%lf", &letter[i]); // 알파벳(피연산자)에 수 할당
+
+double stack[150] = { 0, }; // 연산용 스택
+
+
+for (int j = 0, k = -1; expression[j] != 0; j++) {
+
+	if ((0 <= (expression[j] - 'A')) && ((expression[j] - 'A') < 26)) { // 알파벳(피연산자)인 경우
+		stack[++k] = letter[expression[j] - 'A']; // 문제 지점
+		continue;
+	}
+
+	else {
+		stack[k - 1] = calculate(stack[k-1], stack[k], expression[j]); // 연산자인 경우
+		stack[k] = 0;
+		k--;
+	}
+}
+printf("%.2lf\n", stack[0]);
+return 0;
+}
+
+double calculate(double a, double b, char c) {
+
+	if (c == '+')
+		return a + b;
+	else if (c == '-')
+		return a - b;
+	else if (c == '/')
+		return a / b;
+	else 
+		return a * b;
+}
