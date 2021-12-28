@@ -1,0 +1,26 @@
+#include <stdio.h>
+#pragma warning(disable:4996)
+
+int main(void) {
+
+	int x, y, w, h;
+	scanf("%d %d %d %d", &x, &y, &w, &h);
+	// 왼쪽 아래 꼭짓접 (0,0)
+	// 오른쪽 위 꼭짓점 (w,h)
+	// 현재 위치 (x, y)
+
+	int shortest = 1000;
+	if (x >= y)
+		shortest = y;
+	else
+		shortest = x;
+
+	if (w - x < shortest)
+		shortest = w - x;
+	if (h - y < shortest)
+		shortest = h - y;
+
+	printf("%d", shortest);
+
+	return 0;
+}
