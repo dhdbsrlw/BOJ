@@ -1,0 +1,38 @@
+#include <stdio.h>
+#pragma warning(disable:4996)
+
+int K; // 보유하고 있는 랜선의 개수
+int N; // 필요한 랜선의 개수
+int length[10000] = { 0, };
+long long int max = 0;
+
+// 이진탐색 함수
+long long int binarySearch(long long int start, long long int end) {
+	long long int middle;
+	while (start <= end) {	
+		middle = (start + end) / 2;
+		int sum = 0;
+		for (int i = 0; i < K; i++)
+			sum += length[i] / middle;
+		if (sum >= N)
+			start = middle + 1;
+		else
+			end = middle - 1;
+	}
+	return end;
+}
+
+
+// 오퍼레이션 함수
+int main(void) {
+
+	scanf("%d %d", &K, &N);
+	for (int i = 0; i < K; i++) {
+		scanf("%d", &length[i]);
+		if (length[i] > max)
+			max = length[i];
+	}
+
+	printf("%lld", binarySearch(1, max));
+	return 0;
+}
