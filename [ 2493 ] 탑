@@ -1,0 +1,42 @@
+#include <stdio.h>
+#pragma warning(disable:4996)
+
+int A[500001]; //탑의 높이
+int B[500001]; //수신 탑
+
+int main(void) {
+
+	int N; //탑의 수
+	scanf("%d", &N); 
+
+	for (int i = 0; i < N; i++)
+		scanf("%d", &A[i]); //탑의 수만큼 탑의 높이 입력
+
+	// 메모이제이션
+	for (int i = 0; i < N; i++) {
+		// 첫번째 탑
+		if (i == 0)
+			B[i] = 0;
+
+		// 두번째 탑 이상
+		else if (A[i - 1] >= A[i])
+			B[i] = i;
+		else {
+			for (int j = i - 1; j > 0; j--) {
+				if (A[B[j] - 1] >= A[i]) {
+					B[i] = B[j];
+					break;
+				}
+
+				if (j == 0)
+					B[i] = 0;
+			}
+		}
+	}
+
+	// 출력
+	for (int i = 0; i < N; i++)
+		printf("%d ", B[i]);
+
+	return 0;
+}
