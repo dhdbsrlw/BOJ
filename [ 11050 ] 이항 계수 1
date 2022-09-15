@@ -1,0 +1,36 @@
+#include <stdio.h>
+#pragma warning(disable:4996)
+
+int factorial(int n) {
+	
+	if (n == 0 || n == 1)
+		return 1;
+
+	else {
+		return n * factorial(n - 1);
+	}
+}
+
+int permutation(int n, int r) {
+	
+	int result = 1;
+
+	if (r == 0)
+		return 1;
+
+	while (r) {
+		result *= n;
+		n--; r--;
+	}
+	return result;
+}
+
+int main(void) {
+
+	int N, K;
+	scanf("%d %d", &N, &K);
+	
+	printf("%d", permutation(N,K)/ factorial(K));
+
+	return 0;
+}
