@@ -1,0 +1,30 @@
+#include <stdio.h>
+#pragma warning(disable:4996)
+
+// 초기세팅
+int N;
+int CARD[2000000] = { 0, };
+
+int main() {
+	scanf("%d", &N);
+	for (int i = 0; i < N; i++)
+		CARD[i] = i + 1;
+
+	// 예외처리 (카드가 1장일 때)
+	if (N == 1) {
+		printf("%d", N);
+		return 0;
+	}
+
+	// 로테이션
+	int start = 0, end = N - 1;
+	while (1) {
+		start++; // 삭제
+		if (start == end) break;
+		CARD[++end] = CARD[start++]; // 이동
+	}
+
+	printf("%d", CARD[start]);
+
+	return 0;
+}
