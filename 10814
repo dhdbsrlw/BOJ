@@ -1,0 +1,37 @@
+#include <stdio.h>
+#include <stdlib.h>
+#pragma warning(disable:4996)
+
+int main() {
+
+	int N;
+	scanf("%d", &N);
+
+	typedef struct member {
+		int age;
+		char name[105];
+	} member;
+	typedef	struct member* memberPointer;
+
+	memberPointer members[100000];
+	int i, j;
+
+	for (i = 0; i < N; i++) {
+		members[i] = (memberPointer)malloc(sizeof(struct member));
+		scanf("%d %s", &members[i]->age, &members[i]->name);
+	}
+
+	for (i = 1; i < N; i++) {
+		memberPointer key = members[i];
+		for (j = i - 1; (j >= 0) && (members[j]->age > key->age); j--) {
+			members[j + 1] = members[j];
+		}
+		members[j + 1] = key;
+	}
+
+	for (i = 0; i < N; i++) {
+		printf("%d %s\n", members[i]->age, members[i]->name);
+		free(members[i]);
+	}
+	return 0;
+}
