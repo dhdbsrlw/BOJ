@@ -2,6 +2,115 @@
 #include <stdlib.h>
 #pragma warning(disable:4996)
 
+typedef struct member {
+	int age;
+	int priority;
+	char name[105];
+} member;
+typedef	struct member* memberPointer;
+
+memberPointer members[100000];
+
+void quickSort_age(memberPointer arr[], int L, int R) {
+
+	int left = L, right = R;
+	memberPointer pivot = arr[(left + right) / 2];
+	memberPointer temp;
+
+	do {
+		while (arr[left]->age < pivot->age)
+			left++;
+		while (arr[right]->age > pivot->age)
+			right--;
+		if (left <= right) {
+			temp = arr[left];
+			arr[left] = arr[right];
+			arr[right] = temp;
+			left++;
+			right--;
+		}
+	} while (left <= right);
+
+	if (L < right) quickSort_age(arr, L, right);
+	if (left < R) quickSort_age(arr, left, R);
+}
+
+void quickSort_priority(memberPointer arr[], int L, int R) {
+
+	int left = L, right = R;
+	memberPointer pivot = arr[(left + right) / 2];
+	memberPointer temp;
+
+	do {
+		while (arr[left]->priority < pivot->priority)
+			left++;
+		while (arr[right]->priority > pivot->priority)
+			right--;
+		if (left <= right) {
+			temp = arr[left];
+			arr[left] = arr[right];
+			arr[right] = temp;
+			left++;
+			right--;
+		}
+	} while (left <= right);
+
+	if (L < right) quickSort_priority(arr, L, right);
+	if (left < R) quickSort_priority(arr, left, R);
+}
+
+int main() {
+
+	int N;
+	scanf("%d", &N);
+
+	for (int i = 0; i < N; i++) {
+		members[i] = (memberPointer)malloc(sizeof(struct member));
+		scanf("%d %s", &members[i]->age, &members[i]->name);
+		members[i]->priority = i;
+	}
+
+	// Quick Sort by age
+	quickSort_age(members, 0, N - 1);
+
+	/* (Insert Sort)
+	for (i = 1; i < N; i++) {
+		memberPointer key = members[i];
+		for (j = i - 1; (j >= 0) && (members[j]->age > key->age); j--) {
+			members[j + 1] = members[j];
+		}
+		members[j + 1] = key;
+	}
+	*/
+	
+	// Partially Quick Sorty by prioirty
+	for (int i = 0; i < N; i++) {
+		if (members[i]->age == members[i + 1]->age) {
+			int start = i;
+			while (members[i]->age == members[i + 1]->age) {
+				++i;
+				if (i == N - 1) break;
+			}
+			int end = i;
+			quickSort_priority(members, start, end);
+		}
+	}
+
+	// Print
+	for (int i = 0; i < N; i++) {
+		printf("%d %s\n", members[i]->age, members[i]->name);
+		free(members[i]);
+	}
+	return 0;
+}
+
+
+
+/* Time Out ver. (w/ Insert Sort)
+#include <stdio.h>
+#include <stdlib.h>
+#pragma warning(disable:4996)
+
 int main() {
 
 	int N;
@@ -35,3 +144,4 @@ int main() {
 	}
 	return 0;
 }
+*/
