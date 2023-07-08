@@ -1,0 +1,21 @@
+import sys
+
+input = sys.stdin.readline
+N = int(input())
+
+# 팩토리얼 값 구하기
+num = 1
+for i in range(1, N + 1):
+    num *= i
+n_list = [int(i) for i in str(num)]
+# print(n_list)
+
+cnt = 0
+while(True):
+    if n_list[-1] != 0:
+        break
+    else:
+        cnt += 1
+        n_list.pop()
+
+print(cnt)
