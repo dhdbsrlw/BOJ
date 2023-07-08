@@ -1,0 +1,81 @@
+import sys
+
+input = sys.stdin.readline
+N = int(input())
+
+n_list = []
+for i in range(N):
+    n_list.append(int(input()))
+
+n_stack = []
+operation = []
+
+j = 0
+
+for i in range(1, N + 1):
+    n_stack.append(i)
+    operation.append('+')
+
+    while (j < N) and n_list[j] == n_stack[-1]:
+        n_stack.pop()
+        operation.append('-')
+        j += 1
+
+        # n_stack is empty.
+        if not n_stack: 
+            break 
+
+if n_stack:
+    print('NO')
+
+else:
+    for op in operation:
+        print(op)
+
+
+
+'''
+이하는 반례 필요 - 틀린 코드
+
+# first number in n_list
+for i in range(n_list[0]):
+    n_stack.append(i + 1)
+    operation.append('+')
+
+seq = 1
+result.append(n_stack[-1])
+n_stack.pop()
+operation.append('-')
+n_list.pop(0)
+
+# from second number
+for number in n_list:
+
+    # 스택의 마지막 원소를 NUMBER 로 설정하는 '과정'
+    # (1) empty
+    if len(n_stack) == 0:
+        for i in range(len(result), number):
+            n_stack.append(i + 1)
+            operation.append('+')
+        seq = 0
+
+    # (2) push
+    elif number > n_stack[-1]:
+        for i in range(n_stack[-1] + seq, number):
+            n_stack.append(i + 1)
+            operation.append('+')
+
+        if result[-1] + 1 != number:
+            seq = 0
+
+    # (3) pop - impossible case
+    elif number < n_stack[-1]:
+        break
+
+    # 스택의 마지막 원소가 NUMBER 로 설정 '완료' (number == n_stack[-1])
+    seq += 1
+    result.append(n_stack[-1])
+    n_stack.pop()
+    operation.append('-')
+
+'''
