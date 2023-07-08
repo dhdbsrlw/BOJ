@@ -1,0 +1,40 @@
+import sys
+from collections import deque
+
+input = sys.stdin.readline
+N, M = map(int, input().split())
+board = []
+case = []
+
+for i in range(N):
+    board.append(input())
+
+# 체스판 자르기 (행렬의 시작점이 각각 start_r 와 start_c)
+for start_r in range(N - 7):
+    for start_c in range(M - 7):
+        
+        w_idx = 0
+        b_idx = 0
+
+        # 해당 크기의 체스판에서 개수 체크
+        for i in range(start_r, start_r + 8):
+            for j in range(start_c, start_c + 8):
+
+                # 인덱스 합이 짝수인 경우 (시작점과 같은 색)
+                if (i + j) % 2 == 0:
+                    if board[i][j] == 'B':
+                        w_idx += 1
+                    else:
+                        b_idx += 1 
+
+                # 인덱스 합이 홀수인 경우 (시작점과 다른 색)
+                else:
+                    if board[i][j] == 'B':
+                        b_idx += 1
+                    else:
+                        w_idx += 1 
+        
+        case.append(w_idx)
+        case.append(b_idx)
+
+print(min(case))
